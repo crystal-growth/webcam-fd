@@ -38,7 +38,7 @@ FOCUS_STEP_MIN = 0
 FOCUS_STEP_MAX = 255
 FOCUS_STEP = 5
 
-for fs in range(FOCUS_STEP_MIN,FOCUS_STEP_MAX, FOCUS_STEP):
+for focus in range(FOCUS_STEP_MIN,FOCUS_STEP_MAX, FOCUS_STEP):
     ret, frame = cap.read()
 
     # Display the resulting frame
@@ -57,7 +57,7 @@ for fs in range(FOCUS_STEP_MIN,FOCUS_STEP_MAX, FOCUS_STEP):
     #print(type(frame), ret)
 
     sharpness = cv2.Laplacian(frame, cv2.CV_64F).var()
-    print(fs, sharpness)
+    print(focus, sharpness)
 
 
 # When everything done, release the capture
