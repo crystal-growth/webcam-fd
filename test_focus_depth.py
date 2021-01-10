@@ -60,7 +60,7 @@ for focus in range(FOCUS_STEP_MIN,FOCUS_STEP_MAX, FOCUS_STEP):
     #print(type(frame), ret)
 
     sharpness = cv2.Laplacian(frame, cv2.CV_64F).var()
-    print(focus, sharpness)
+    print(f"{focus}\t{sharpness}")
 
 
 # When everything done, release the capture
