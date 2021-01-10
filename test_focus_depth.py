@@ -25,7 +25,7 @@ cap.set(cv2.CAP_PROP_FRAME_HEIGHT, HEIGHT)
 #v4l2-ctl -d /dev/video0 -c exposure_auto=1 -c exposure_auto_priority=0 -c exposure_absolute=500
 
 def set_focus_absolute(device_path: str, focus_step: int):
-    os.system(f"v4l2-ctl -d {device_path} -c focus-auto=0 -c focus_absolute={str(focus_step)}")
+    os.system(f"v4l2-ctl -d {device_path} -c focus_auto=0 -c focus_absolute={str(focus_step)}")
     time.sleep(0.1)
 
 
