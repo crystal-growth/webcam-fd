@@ -2,7 +2,7 @@ import cv2
 from matplotlib import pyplot as plt
 import sys
 import os
-
+import time
 WIDTH, HEIGHT   = 1280, 720
 DEFAULT_DEVICE_PATH = "/dev/video0"
 DEVICE_PATH_ROOT = "/dev/video"
@@ -25,7 +25,8 @@ cap.set(cv2.CAP_PROP_FRAME_HEIGHT, HEIGHT)
 #v4l2-ctl -d /dev/video0 -c exposure_auto=1 -c exposure_auto_priority=0 -c exposure_absolute=500
 
 def set_focus_absolute(device_path: str, focus_step: int):
-    os.system(f"v4l2-ctl -d {device_path} -c focus_absolute={str(focus_step_str)}")
+    os.system(f"v4l2-ctl -d {device_path} -c focus_absolute={str(focus_step)}")
+    time.sleep(0.1)
 
 
 # cap.set(cv2.CAP_PROP_AUTO_EXPOSURE, 1)
@@ -39,6 +40,8 @@ FOCUS_STEP_MAX = 255
 FOCUS_STEP = 5
 
 for focus in range(FOCUS_STEP_MIN,FOCUS_STEP_MAX, FOCUS_STEP):
+    set_focus_absolute(device_path, focus)
+
     ret, frame = cap.read()
 
     # Display the resulting frame
